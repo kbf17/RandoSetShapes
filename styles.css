@@ -1,0 +1,12 @@
+#shapesArea {
+    height: 600px;
+    width: 600px;
+    display: inline-block;
+    background-color: #C8BFD8
+}
+
+#shapesDrawer {
+    width: 40%;
+    height: auto;
+    display: inline-block;
+}
