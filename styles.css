@@ -1,7 +1,7 @@
 #shapesArea {
     height: 600px;
     width: 600px;
-    display: inline-block;
+    float: right;
     background-color: #C8BFD8
 }
 
@@ -9,4 +9,27 @@
     width: 40%;
     height: auto;
     display: inline-block;
+}
+
+#parameters {
+    height: 600px;
+    width: auto;
+}
+
+.circle {
+    border-radius: 50px;
+    background: purple;
+}
+
+.triangle {
+    border-top: 100px solid blue;
+	border-left: 100px solid transparent;
+}
+
+.rectangle {
+    background-color: palevioletred;
+}
+
+.square {
+    background: thistle;
 }
