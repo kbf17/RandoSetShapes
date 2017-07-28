@@ -1,13 +1,14 @@
 #shapesArea {
     height: 600px;
     width: 600px;
-    float: right;
+    float: left;
     background-color: #C8BFD8
 }
 
 #shapesDrawer {
-    width: 40%;
+    width: 20%;
     height: auto;
+    float: left;
     display: inline-block;
 }
 
@@ -22,14 +23,20 @@
 }
 
 .triangle {
-    border-top: 100px solid blue;
-	border-left: 100px solid transparent;
+    border-bottom-color: blue;
+    border-bottom-style: solid;
+    border-right-color: transparent;
+    border-right-style: solid;
+    width: 0px;
+    height: 0px;
 }
 
 .rectangle {
     background-color: palevioletred;
+    display: inline-flex;
+    position: absolute;
 }
 
 .square {
-    background: thistle;
+    background: hotpink;
 }
