@@ -21,6 +21,12 @@ class Shapes {
         this.object.addEventListener('click', this.describe.bind(this));
         this.object.addEventListener('dblclick', function(){
             this.remove();
+            Shape.innerText = "";
+            Width.innerHTML = "";
+            Height.innerHTML = "";
+            Radius.innerHTML = "";
+            Area.innerHTML = "";
+            Perimeter.innerHTML = "";
         })
     }
     draw(){
@@ -47,6 +53,7 @@ class Rectangle extends Shapes {
         this.object.style.width = width + "px";
         this.object.style.top = Math.floor(Math.random() * 501) + "px";
         this.object.style.left = Math.floor(Math.random() * 501) + "px";
+        this.radi = "N/A ";
         this.draw();
     }
     get area(){
@@ -69,6 +76,7 @@ class Square extends Shapes {
         this.object.style.width = sideLength + "px";
         this.object.style.top = Math.floor(Math.random() * 501) + "px";
         this.object.style.left = Math.floor(Math.random() * 501) + "px";
+        this.radi = "N/A ";
         this.draw();
     }
     get area(){
@@ -87,6 +95,8 @@ class Circle extends Shapes {
         this.object.style.width = 2 * radi + "px";
         this.object.style.top = Math.floor(Math.random() * 401) + "px";
         this.object.style.left = Math.floor(Math.random() * 401) + "px";
+        this.height = "N/A ";
+        this.width = "N/A ";
         console.log(radi);
         this.draw();
     }
