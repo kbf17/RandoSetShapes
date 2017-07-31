@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', function(){
     console.log('Document Ready');
 
 })
+$(document).ready(function(){
+    console.log('ready');
+})
 let shapesArea = document.getElementById('shapesArea');
     Shape = document.getElementById('Shape');
     Width = document.getElementById('Width');
@@ -18,20 +21,22 @@ class Shapes {
         this.object.className = shape;
         this.width = width;
         this.height = height;
-        // this.area = area;
+        this.object.addEventListener('click', this.describe.bind(this));
+        this.object.addEventListener('dblclick', function(){
+            this.remove();
+        })
     }
     draw(){
-        shapesArea.appendChild(this.object);
+        shapesArea.appendChild(this.object);        
     }
     describe(shape, height, width, area, radius, perimeter) {
         console.log('I am a ' + this.object.className);
         Shape.innerHTML = this.object.className;
-        Width.innerHTML = this.width;
-        Height.innerHTML = this.height;
-        Radius.innerHTML = this.radius;
-        Area.innerHTML = this.area;
-        Perimeter.innerHTML = this.perimeter;
-
+        Width.innerHTML = this.width + 'px';
+        Height.innerHTML = this.height + 'px';
+        Radius.innerHTML = this.radi + ' px';
+        Area.innerHTML = this.area + 'px';
+        Perimeter.innerHTML = this.perimeter + 'px';
     }
 }
 // Child classes
@@ -43,13 +48,16 @@ class Rectangle extends Shapes {
         this.height = height;
         this.object.style.height = height + "px";
         this.object.style.width = width + "px";
-        this.object.style.top = Math.floor(Math.random() * 601) + "px";
-        this.object.style.left = Math.floor(Math.random() * 601) + "px";
+        this.object.style.top = Math.floor(Math.random() * 501) + "px";
+        this.object.style.left = Math.floor(Math.random() * 501) + "px";
         this.draw();
     }
-        get area(){
-          return this.width * this.height; 
-        }  
+    get area(){
+        return this.width * this.height; 
+    }
+    get perimeter(){
+        return (this.width*2) + (this.height*2);
+    }  
 }
 
 class Square extends Shapes {
@@ -57,15 +65,20 @@ class Square extends Shapes {
         super('square');
         console.log('im a square');
         this.name = "Square";
+        this.width = sideLength;
+        this.height = sideLength;
         this.sideLength = sideLength;
         this.object.style.height = sideLength + "px";
         this.object.style.width = sideLength + "px";
-        this.object.style.top = Math.floor(Math.random() * 601) + "px";
-        this.object.style.left = Math.floor(Math.random() * 601) + "px";
+        this.object.style.top = Math.floor(Math.random() * 501) + "px";
+        this.object.style.left = Math.floor(Math.random() * 501) + "px";
         this.draw();
     }
     get area(){
-        return this.sideLength*2;
+        return this.sideLength*this.sideLength;
+    }
+    get perimeter(){
+        return this.sideLength*4;
     }
 }
 
@@ -75,10 +88,16 @@ class Circle extends Shapes {
         this.radi = radi;
         this.object.style.height = 2 * radi + "px";
         this.object.style.width = 2 * radi + "px";
-        this.object.style.top = Math.floor(Math.random() * 601) + "px";
-        this.object.style.left = Math.floor(Math.random() * 601) + "px";
+        this.object.style.top = Math.floor(Math.random() * 401) + "px";
+        this.object.style.left = Math.floor(Math.random() * 401) + "px";
         console.log(radi);
         this.draw();
+    }
+    get area() {
+        return Math.PI * this.radi * this.radi;
+    };
+    get perimeter(){
+        return 2*Math.PI*this.radi;
     }
 }
 
@@ -86,11 +105,19 @@ class Triangle extends Shapes {
     constructor(height){
         super('triangle');
         this.height = height;
-        this.object.style.borderBottomWidth = height;
-        this.object.style.borderRightWidth = height;
-        this.object.style.top = Math.floor(Math.random() * 601) + "px";
-        this.object.style.left = Math.floor(Math.random() * 601) + "px";
+        this.width = height;
+        this.object.style.borderBottomWidth = height +'px';
+        this.object.style.borderRightWidth = height +'px';
+        this.object.style.top = Math.floor(Math.random() * 501) + "px";
+        this.object.style.left = Math.floor(Math.random() * 501) + "px";
+        console.log(this.height);
         this.draw();
+    }
+    get area(){
+        return 0.5 * this.height * this.height
+    }
+    get perimeter(){
+        return 2 * this.height * Math.floor(Math.sqrt(2 * this.height * this.height));
     }
 }
 // Create New Shapes
@@ -100,23 +127,40 @@ function  newRec() {
     const rectangle = new Rectangle(width, height);
     console.log(rectangle);
     rectangle.describe();
+    document.getElementById('recHeight').value = '';
+    document.getElementById('recWidth').value = '';
 }
 
 function newSq(){
     let sideLength = document.getElementById('sqLength').value;
     let square = new Square(sideLength);
     square.describe();
+    document.getElementById('sqLength').value = '';
 }
 
 function newCircle(){
     let radi = document.getElementById('cirRadius').value;
     let circle = new Circle(radi);
     circle.describe();
+    document.getElementById('cirRadius').value = '';
 }
 
 function newTriangle(){
-    let height = document.getElementById('triHeight').value + "px";
+    let height = document.getElementById('triHeight').value;
     let triangle = new Triangle(height);
+    triangle.describe();
+    document.getElementById('triHeight').value = '';
+}
+
+function goodBye(){
+    this.remove();
+    Shape.innerText = '';
+    Width.innerText = '';
+    Height.innerText = '';
+    Radius.innerText = '';
+    Area.innerText = '';
+    Perimeter.innerText = '';
+
 }
 
 document.getElementById('genRec').addEventListener('click', newRec);

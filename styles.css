@@ -2,7 +2,8 @@
     height: 600px;
     width: 600px;
     float: left;
-    background-color: #C8BFD8
+    background-color: #C8BFD8;
+    position: relative;
 }
 
 #shapesDrawer {
@@ -15,11 +16,14 @@
 #parameters {
     height: 600px;
     width: auto;
+    display: inline-block;
+    padding: 10px;
 }
 
 .circle {
-    border-radius: 50px;
+    border-radius: 100px;
     background: purple;
+    position: absolute;
 }
 
 .triangle {
@@ -29,6 +33,7 @@
     border-right-style: solid;
     width: 0px;
     height: 0px;
+    position: absolute;
 }
 
 .rectangle {
@@ -39,4 +44,5 @@
 
 .square {
     background: hotpink;
+    position: absolute;
 }
