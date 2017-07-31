@@ -3,9 +3,6 @@ document.addEventListener('DOMContentLoaded', function(){
     console.log('Document Ready');
 
 })
-$(document).ready(function(){
-    console.log('ready');
-})
 let shapesArea = document.getElementById('shapesArea');
     Shape = document.getElementById('Shape');
     Width = document.getElementById('Width');
@@ -117,7 +114,7 @@ class Triangle extends Shapes {
         return 0.5 * this.height * this.height
     }
     get perimeter(){
-        return 2 * this.height * Math.floor(Math.sqrt(2 * this.height * this.height));
+        return 2 * this.height + Math.floor(Math.sqrt(2 * this.height * this.height));
     }
 }
 // Create New Shapes
