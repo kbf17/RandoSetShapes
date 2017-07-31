@@ -91,10 +91,10 @@ class Circle extends Shapes {
         this.draw();
     }
     get area() {
-        return Math.PI * this.radi * this.radi;
+        return Math.floor(Math.PI * this.radi * this.radi);
     };
     get perimeter(){
-        return 2*Math.PI*this.radi;
+        return Math.floor(2*Math.PI*this.radi);
     }
 }
 
